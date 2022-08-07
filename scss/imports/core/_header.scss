@@ -1,0 +1,167 @@
+// css header
+header{
+    height: var(--heightHeader);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    @include transition($t);
+    &.backgroundBlack{
+        background: $black-bg-cl;
+        @include transition($t);
+    }
+    .container-fluid{
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center; 
+        .logo{
+            .hidden{
+                display: none;
+            }
+        }
+        .menu{
+            height: 100%;
+            display: flex;
+            position: absolute;
+            left: 50%;
+            @include transform(translateX(-50%));
+            li{
+                height: 100%;
+                list-style-type: none;
+                a{
+                    padding: 0 30px;
+                    height: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    text-decoration: none;
+                    @include text(15px, PB, normal, $white-cl, uppercase);
+                    opacity: 0.5;
+                    @include transition($t);
+                    &:hover{
+                        @include transition($t);
+                        opacity: 1;
+                        color: $yellow-cl;
+                    }
+                    &.activeMenu{
+                        @include transition($t);
+                        opacity: 1;
+                        color: $yellow-cl;
+                    }
+                }
+            }
+        }
+        .right{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            .language{
+                cursor: pointer;    
+                height: 100%;
+                position: relative;
+                &__current{
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    span{
+                        @include text(15px, PB, normal, $white-cl, uppercase);
+                        margin-right: 8px;
+                        opacity: 0.5;
+                    }
+                    i{
+                        img{
+                            width: 10px;
+                        };
+                    }
+                }
+                &__option{
+                    position: absolute;
+                    right: 0;
+                    top: var(--heightHeader);
+                    background-color: #000;
+                    @include visible(0);
+                    a{
+                        display: block;
+                        padding: 7px 20px;
+                        text-decoration: none;
+                        @include text(15px, PB, normal, $white-cl, uppercase);
+                        opacity: 0.5;
+                        @include transition($t);
+                        &:first-child{
+                            padding-top: 14px;
+                        }
+                        &:last-child{
+                            padding-bottom: 14px;
+                        }
+                        &:hover{
+                            opacity: 1;
+                            @include transition($t);
+                            color: $yellow-cl;
+                        }
+                    }
+                }
+                // &:hover{
+                //     .language__option{
+                //         @include visible(1);
+                //     }
+                // }
+                &.active{
+                    .language__option{
+                        @include visible(1);
+                    }
+                }
+            }
+            .btn-menu{
+                display: none;
+                position: relative;
+                margin-left: 15px;
+                width: 30px;
+                height: 20px;
+                cursor: pointer;
+                span{
+                    width: 100%;
+                    height: 2px;
+                    display: block;
+                    background: $yellow-cl;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    @include transform(translate(-50%, -50%));
+                }
+                &::before, &::after{
+                    content: "";
+                    width: 100%;
+                    height: 2px;
+                    display: block;
+                    background: $yellow-cl;
+                }
+                &::after{
+                    position: absolute;
+                    bottom: 0;
+                }
+            }
+        }
+    }
+    @include sm{
+        .container-fluid{
+            .menu{
+                display: none;
+            }
+            .right{
+                .btn-menu{
+                    display: block;
+                }
+            }
+        }
+    }
+    @include xxs{
+        .container-fluid{
+            .logo{
+                width: 150px;
+            }
+        }
+    }
+}

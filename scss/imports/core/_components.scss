@@ -1,0 +1,67 @@
+// css components
+.textbox{
+    padding-left: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h3{
+        @include text(40px, PB, normal, $text-black-cl, uppercase);
+        position: relative;
+        display: flex;
+        align-items: center;
+        &::before{
+            content: "";
+            width: 80px;
+            height: 2px;
+            background: #555555;
+            display: inline-block;
+            position: relative;
+            margin-left: -80px;
+            left: -20px;
+        }
+
+    }
+    p{
+        @include text($fz-text, fmain, normal, $text-cl, normal);
+        padding: 10px 0 24px 0;
+    }
+}
+@include xs{
+    .textbox{
+        h3{
+            font-size: &font-title-mobile;
+        }
+    }
+}
+.btn-arrow-right{
+    @include text(14px, PB, normal, $text-black-cl, uppercase);
+    text-decoration: none;
+    letter-spacing: 2px;
+    position: relative;
+    @include transition($t);
+    cursor: pointer;
+    i{
+        margin-left: 10px;
+        img{
+            @include transition($t);
+            @include transform(translateX(0px));
+        }
+    }
+    &::before{
+        content: "";
+        width: 35px;
+        height: 2px;
+        background-color: $yellow-cl;
+        position: absolute;
+        bottom: -5px;
+        left: 0;  
+    }
+    &:hover{
+        i{
+           img{
+            @include transition($t);
+                @include transform(translateX(10px));
+           }
+        }
+    }
+}

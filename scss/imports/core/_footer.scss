@@ -1,0 +1,41 @@
+// css footer
+footer{
+    background: $black-bg-cl;
+    height: auto;
+    padding: 30px 0;
+    .container{
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        .create-by{
+            @include text(12px, fmain, normal, $white-cl, normal);
+        }
+        .footer-logo{
+            position: absolute;
+            left: 50%;
+            @include transform(translateX(-50%));
+        }
+        .back-to-top{
+            a{ 
+                @include text(12px, fmain, normal, $white-cl, uppercase);
+                cursor: pointer;
+                &:hover{
+                    color: $yellow-cl;
+                }
+            }
+        }
+    }
+    @include xs{
+        .container{
+            display: block;
+            text-align: center;
+            .footer-logo{
+                position: initial;
+                @include transform(translateX(-0));
+                margin: 15px 0 10px 0;
+            }
+        }
+    }
+}
